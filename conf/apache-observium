@@ -1,0 +1,17 @@
+<VirtualHost *:8000>
+       ServerAdmin webmaster@localhost
+       DocumentRoot /opt/observium/html
+       <Directory />
+               Options FollowSymLinks
+               AllowOverride None
+       </Directory>
+       <Directory /opt/observium/html/>
+              Options Indexes FollowSymLinks MultiViews
+              AllowOverride All
+              Require all granted
+      </Directory>
+       ErrorLog  /opt/observium/logs/error_log
+       LogLevel warn
+       CustomLog  /opt/observium/logs/access_log combined
+       ServerSignature On
+</VirtualHost>
