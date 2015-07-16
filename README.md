@@ -6,6 +6,12 @@ communitiy and professional editions (via arbritrary svn source), packages
 to allow native LDAP auth, and easy plugin support by exposing htmldir as a
 volume.
 
+At Yelp we use this to provide portability to our NMS. With a flexible
+image, it's easy to manage 2+ instances with Puppet or 
+[insert way to configure/schedule containers here]. Good use cases would be 
+instances for corp and prod, managed services and internal, or just a single 
+one that's more predictable on any box.
+
 Using this image
 ----------------
 
@@ -50,28 +56,13 @@ Volumes
 
 The following volumes are set in the container:
 
-1. `/config`
-
-   `config.php` should go here
-
-2. `/opt/observium/html`
-
-   This allows you to add HTML plugins if you wish (such as weathermap!)
-
-3. `/opt/observium/logs`
-
-   HTML error and access logs will be placed here as well as
-   `observium.log` and `update-errors.log`
-
-4. `/opt/observium/rrd`
-
-   Preferably mount this volume where you have a good amount of space.
-   Recommended that you back these up.
-
-5. `/var/run/mysqld/mysqld.sock`
-
-   If you're running MySQL on the local docker host, make use of this volume
-   and set the SQL host to `localhost` is `config.php`
+| Volume                        | Purpose                                                                                                                       |
+|:------------------------------|:------------------------------------------------------------------------------------------------------------------------------|
+| `/config`                     | `config.php` should go here                                                                                                   |
+| `/opt/observium/html`         | This allows you to add HTML plugins if you wish (such as weathermap!)                                                         |
+| `/opt/observium/logs`         | HTTP error/access, `observium.log` and `update-errors.log`                                                                    |
+| `/opt/observium/rrd`          | Mount this where you have a ample space and back up!                                                                          |
+| `/var/run/mysqld/mysqld.sock` | If you're running MySQL on the local Docker host, make use of this volume and set the SQL host to `localhost` in `config.php` |
 
 If you need to sub-in random, single files just add an extra `-v` argument to
 your run (or however you're starting the container. Puppet anyone?) to the
