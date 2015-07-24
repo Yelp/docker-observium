@@ -95,7 +95,7 @@ RUN apt-get update -q && \
       whois
 
 RUN mkdir -p \
-        /config
+        /config \
         /opt/observium/html \
         /opt/observium/logs \
         /opt/observium/rrd \
