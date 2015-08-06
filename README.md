@@ -76,12 +76,15 @@ Only TCP/8000 is exposed.
 Environment variables
 ---------------------
 
-All of the environment variables that are used were shown above.
+All of the environment variables that are supported:
 
     USE_SVN=true
     SVN_USER=username
     SVN_PASS=password
     SVN_REPO=http://url/to/repo@revision
+
+    # Will not mess with the php.ini if you supply your own via volume mount
+    CUSTOM_PHP_INI=true
 
 If you don't have a subscription but run your own managed copy, feel free to
 sub-in your own repo.
