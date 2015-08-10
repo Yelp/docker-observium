@@ -67,6 +67,7 @@ RUN apt-get update -q && \
     apt-get install -y --no-install-recommends \
       at \
       fping \
+      git \
       graphviz \
       graphviz \
       imagemagick \

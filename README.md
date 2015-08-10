@@ -82,9 +82,18 @@ All of the environment variables that are supported:
     SVN_USER=username
     SVN_PASS=password
     SVN_REPO=http://url/to/repo@revision
+    USE_WEATHERMAP=true
 
     # Will not mess with the php.ini if you supply your own via volume mount
     CUSTOM_PHP_INI=true
 
 If you don't have a subscription but run your own managed copy, feel free to
 sub-in your own repo.
+
+Weathermap
+----------
+
+As in the list above, setting `USE_WEATHERMAP` will install network-weathermap
+under the htmldir if not there already and schedule map-poller.php in cron.
+
+To modify configuration, volume mount observium's htmldir to access weathermap.
