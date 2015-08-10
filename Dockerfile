@@ -87,6 +87,7 @@ RUN apt-get update -q && \
       php-pear \
       pwgen \
       python-mysqldb \
+      rrdcached \
       rrdtool \
       snmp \
       software-properties-common \
@@ -121,6 +122,7 @@ RUN chmod +x /etc/my_init.d/* && \
 # Configure apache2 to serve Observium app
 COPY ["conf/apache2.conf", "conf/ports.conf", "/etc/apache2/"]
 COPY conf/apache-observium /etc/apache2/sites-available/000-default.conf
+COPY conf/rrdcached /etc/default/rrdcached
 RUN rm /etc/apache2/sites-available/default-ssl.conf && \
     echo www-data > /etc/container_environment/APACHE_RUN_USER && \
     echo www-data > /etc/container_environment/APACHE_RUN_GROUP && \

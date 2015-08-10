@@ -97,3 +97,11 @@ As in the list above, setting `USE_WEATHERMAP` will install network-weathermap
 under the htmldir if not there already and schedule map-poller.php in cron.
 
 To modify configuration, volume mount observium's htmldir to access weathermap.
+
+Notes
+-----
+
+This image installs and runs rrdcached. To make use of it, make sure your
+observium configuration sets
+
+    $config['rrdcached']    = "unix:/var/run/rrdcached.sock"
