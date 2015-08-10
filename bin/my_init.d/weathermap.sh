@@ -12,12 +12,13 @@ C='*/5 * * * * /opt/observium/html/weathermap/map-poller.php >> /dev/null 2>&1'
 if [ "$USE_WEATHERMAP" = true ]; then
 
     # If weathermap isn't in observium htmldir, install it
-    if [ ! -d "$HTMLDIR" ]; then
-        cd $WEATHERMAP
+    if [ ! -d "$WEATHERMAP" ]; then
+        cd $HTMLDIR
         git clone https://github.com/laf/weathermap.git weathermap
+        chown -hR nobody:users "$WEATHERMAP"
     fi
 
     # Regardless, schedule map-poller.php
-    echo $C > /etc/cron.d/weathermap
+    echo "$C" > /etc/cron.d/weathermap
 
 fi
