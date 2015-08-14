@@ -46,9 +46,9 @@ ENV WORKERS 2
 ENV WEATHERMAP false
 ENV CUSTOM_PHP_INI false
 ENV USE_SVN false
-ENV SVN_USER default
-ENV SVN_PASS default
-ENV SVN_REPO http://url/to/repo@rev
+ENV SVN_USER
+ENV SVN_PASS
+ENV SVN_REPO
 
 # Avoid any interactive prompting
 ENV DEBIAN_FRONTEND noninteractive
