@@ -41,6 +41,15 @@ CMD ["/sbin/my_init"]
 
 # === General System
 
+# yelp/observium env mostly for reference
+ENV WORKERS 2
+ENV WEATHERMAP false
+ENV CUSTOM_PHP_INI false
+ENV USE_SVN false
+ENV SVN_USER ''
+ENV SVN_PASS ''
+ENV SVN_REPO ''
+
 # Avoid any interactive prompting
 ENV DEBIAN_FRONTEND noninteractive
 
