@@ -76,19 +76,23 @@ Only TCP/8000 is exposed.
 Environment variables
 ---------------------
 
-All of the environment variables that are supported:
+| Variable            | Default Value    |
+|:--------------------|:-----------------|
+| `WORKERS`           | 2                |
+| `USE_WEATHERMAP`    | false            |
+| `CUSTOM_PHP_INI`    | false            |
+| `USE_SVN`           | false            |
+| `SVN_USER`          | N/A              |
+| `SVN_PASS`          | N/A              |
+| `SVN_REPO`          | N/A              |
 
-    USE_SVN=true
-    SVN_USER=username
-    SVN_PASS=password
-    SVN_REPO=http://url/to/repo@revision
-    USE_WEATHERMAP=true
-
-    # Will not mess with the php.ini if you supply your own via volume mount
-    CUSTOM_PHP_INI=true
 
 If you don't have a subscription but run your own managed copy, feel free to
 sub-in your own repo.
+
+Depending on your number of devices, the default 2 workers likely isn't enough
+based on a polling period every 5 minutes. Just pass ``WORKERS=32``, for
+example, if your total core count is 32 and you want to use them all.
 
 Weathermap
 ----------
@@ -97,3 +101,11 @@ As in the list above, setting `USE_WEATHERMAP` will install network-weathermap
 under the htmldir if not there already and schedule map-poller.php in cron.
 
 To modify configuration, volume mount observium's htmldir to access weathermap.
+
+Notes
+-----
+
+This image installs and runs rrdcached. To make use of it, make sure your
+observium configuration sets
+
+    $config['rrdcached']    = "unix:/var/run/rrdcached.sock"

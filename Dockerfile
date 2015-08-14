@@ -8,7 +8,7 @@
 #   SVN_PASS=password
 #   SVN_REPO=http://url/to/repo@rev
 #
-# If you don't have a subscription but run your own managed repository, 
+# If you don't have a subscription but run your own managed repository,
 # SVN_REPO is arbritrarily accepted. If USE_SVN is specified, credentials and
 # repository information must also be otherwise will fallback to community
 # version.
@@ -18,12 +18,12 @@
 #   /config                     : Should contain your `config.php`, otherwise
 #                                 default will be used
 #   /opt/observium/html         : Provided to ease adding plugis (weathermap!)
-#   /opt/observium/logs         : Would be nice to store these somewhere 
+#   /opt/observium/logs         : Would be nice to store these somewhere
 #                                 non-volatile!
 #   /opt/observium/rrd          : Will consume the most storage.
 #   /var/run/mysqld/mysqld.sock : If your MySQL server is on the same host that
-#                                 serves the container, setting 'localhost' in 
-#                                 observium config will look for the unix 
+#                                 serves the container, setting 'localhost' in
+#                                 observium config will look for the unix
 #                                 socket instead of using TCP.
 #
 #
@@ -96,6 +96,7 @@ RUN apt-get update -q && \
       php-pear \
       pwgen \
       python-mysqldb \
+      rrdcached \
       rrdtool \
       snmp \
       software-properties-common \
@@ -130,6 +131,7 @@ RUN chmod +x /etc/my_init.d/* && \
 # Configure apache2 to serve Observium app
 COPY ["conf/apache2.conf", "conf/ports.conf", "/etc/apache2/"]
 COPY conf/apache-observium /etc/apache2/sites-available/000-default.conf
+COPY conf/rrdcached /etc/default/rrdcached
 RUN rm /etc/apache2/sites-available/default-ssl.conf && \
     echo www-data > /etc/container_environment/APACHE_RUN_USER && \
     echo www-data > /etc/container_environment/APACHE_RUN_GROUP && \
