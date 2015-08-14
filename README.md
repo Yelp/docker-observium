@@ -76,17 +76,16 @@ Only TCP/8000 is exposed.
 Environment variables
 ---------------------
 
-All of the environment variables that are supported:
+| Variable            | Default Value    |
+|:--------------------|:-----------------|
+| `WORKERS`           | 2                |
+| `USE_WEATHERMAP`    | false            |
+| `CUSTOM_PHP_INI`    | false            |
+| `USE_SVN`           | false            |
+| `SVN_USER`          | N/A              |
+| `SVN_PASS`          | N/A              |
+| `SVN_REPO`          | N/A              |
 
-    USE_SVN=false
-    SVN_USER=username
-    SVN_PASS=password
-    SVN_REPO=http://url/to/repo@revision
-    USE_WEATHERMAP=true
-    WORKERS=2
-
-    # Will not mess with the php.ini if you supply your own via volume mount
-    CUSTOM_PHP_INI=true
 
 If you don't have a subscription but run your own managed copy, feel free to
 sub-in your own repo.
