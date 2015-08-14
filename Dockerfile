@@ -8,7 +8,7 @@
 #   SVN_PASS=password
 #   SVN_REPO=http://url/to/repo@rev
 #
-# If you don't have a subscription but run your own managed repository, 
+# If you don't have a subscription but run your own managed repository,
 # SVN_REPO is arbritrarily accepted. If USE_SVN is specified, credentials and
 # repository information must also be otherwise will fallback to community
 # version.
@@ -18,12 +18,12 @@
 #   /config                     : Should contain your `config.php`, otherwise
 #                                 default will be used
 #   /opt/observium/html         : Provided to ease adding plugis (weathermap!)
-#   /opt/observium/logs         : Would be nice to store these somewhere 
+#   /opt/observium/logs         : Would be nice to store these somewhere
 #                                 non-volatile!
 #   /opt/observium/rrd          : Will consume the most storage.
 #   /var/run/mysqld/mysqld.sock : If your MySQL server is on the same host that
-#                                 serves the container, setting 'localhost' in 
-#                                 observium config will look for the unix 
+#                                 serves the container, setting 'localhost' in
+#                                 observium config will look for the unix
 #                                 socket instead of using TCP.
 #
 #
@@ -40,6 +40,15 @@ VOLUME ["/config", \
 CMD ["/sbin/my_init"]
 
 # === General System
+
+# yelp/observium env mostly for reference
+ENV WORKERS 2
+ENV WEATHERMAP false
+ENV CUSTOM_PHP_INI false
+ENV USE_SVN false
+ENV SVN_USER default
+ENV SVN_PASS default
+ENV SVN_REPO http://url/to/repo@rev
 
 # Avoid any interactive prompting
 ENV DEBIAN_FRONTEND noninteractive

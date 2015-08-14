@@ -78,17 +78,22 @@ Environment variables
 
 All of the environment variables that are supported:
 
-    USE_SVN=true
+    USE_SVN=false
     SVN_USER=username
     SVN_PASS=password
     SVN_REPO=http://url/to/repo@revision
     USE_WEATHERMAP=true
+    WORKERS=2
 
     # Will not mess with the php.ini if you supply your own via volume mount
     CUSTOM_PHP_INI=true
 
 If you don't have a subscription but run your own managed copy, feel free to
 sub-in your own repo.
+
+Depending on your number of devices, the default 2 workers likely isn't enough
+based on a polling period every 5 minutes. Just pass ``WORKERS=32``, for
+example, if your total core count is 32 and you want to use them all.
 
 Weathermap
 ----------
