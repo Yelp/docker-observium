@@ -102,6 +102,22 @@ under the htmldir if not there already and schedule map-poller.php in cron.
 
 To modify configuration, volume mount observium's htmldir to access weathermap.
 
+Maintenance
+-----------
+
+Observium has a tendancy to become huge over time with its eventlog containing
+every port that flaps, syslog, performance timings for every run, and more.
+
+This image comes with a cronjob that will run daily for you to clean this up.
+By default it will run with the switches set for eventlog and performance
+timings, but like most things in this image it can be overridden by providing
+`HOUSEKEEPING_ARGS' as an environment variable.
+
+Please checkout out the [initial post] in the mailing list for details on how
+to configure your config.php for better control and what each switch does.
+
+[initial post]: http://postman.memetic.org/pipermail/observium/2014-July/007264.html
+
 Notes
 -----
 
