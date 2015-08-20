@@ -81,7 +81,7 @@ Environment variables
 | `WORKERS`           | 2                |
 | `USE_WEATHERMAP`    | false            |
 | `CUSTOM_PHP_INI`    | false            |
-| `HOUSEKEEPING_ARGS` | '-e -t'          |
+| `HOUSEKEEPING_ARGS` | '-yet'           |
 | `USE_SVN`           | false            |
 | `SVN_USER`          | N/A              |
 | `SVN_PASS`          | N/A              |
