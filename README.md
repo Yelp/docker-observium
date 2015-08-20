@@ -120,6 +120,10 @@ to configure your config.php for better control and what each switch does.
 Currently the stdout/stderr for the job isn't being sent to /dev/null so you
 should be able to see the status of your cleanups with `docker logs [id]`
 
+It is recommended by Observium to run the housekeeping script manually first
+before relying on the crons since it may take awhile to first run. Do this if
+you are using existing data for this image.
+
 [initial post]: http://postman.memetic.org/pipermail/observium/2014-July/007264.html
 
 Notes
