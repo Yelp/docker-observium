@@ -111,7 +111,7 @@ every port that flaps, syslog, performance timings for every run, and more.
 This image comes with a cronjob that will run daily for you to clean this up.
 By default it will run with the switches set for eventlog and performance
 timings, but like most things in this image it can be overridden by providing
-`HOUSEKEEPING_ARGS' as an environment variable.
+`HOUSEKEEPING_ARGS` as an environment variable.
 
 Please checkout out the [initial post] in the mailing list for details on how
 to configure your config.php for better control and what each switch does.
