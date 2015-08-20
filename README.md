@@ -81,6 +81,7 @@ Environment variables
 | `WORKERS`           | 2                |
 | `USE_WEATHERMAP`    | false            |
 | `CUSTOM_PHP_INI`    | false            |
+| `HOUSEKEEPING_ARGS` | '-e -t'          |
 | `USE_SVN`           | false            |
 | `SVN_USER`          | N/A              |
 | `SVN_PASS`          | N/A              |
@@ -101,6 +102,29 @@ As in the list above, setting `USE_WEATHERMAP` will install network-weathermap
 under the htmldir if not there already and schedule map-poller.php in cron.
 
 To modify configuration, volume mount observium's htmldir to access weathermap.
+
+Maintenance
+-----------
+
+Observium has a tendancy to become huge over time with its eventlog containing
+every port that flaps, syslog, performance timings for every run, and more.
+
+This image comes with a cronjob that will run daily for you to clean this up.
+By default it will run with the switches set for eventlog and performance
+timings, but like most things in this image it can be overridden by providing
+`HOUSEKEEPING_ARGS` as an environment variable.
+
+Please checkout out the [initial post] in the mailing list for details on how
+to configure your config.php for better control and what each switch does.
+
+Currently the stdout/stderr for the job isn't being sent to /dev/null so you
+should be able to see the status of your cleanups with `docker logs [id]`
+
+It is recommended by Observium to run the housekeeping script manually first
+before relying on the crons since it may take awhile to first run. Do this if
+you are using existing data for this image.
+
+[initial post]: http://postman.memetic.org/pipermail/observium/2014-July/007264.html
 
 Notes
 -----

@@ -1,3 +1,4 @@
 33  */6   * * *   root    /opt/observium/discovery.php -h all >> /dev/null 2>&1
 */5 *     * * *   root    /opt/observium/discovery.php -h new >> /dev/null 2>&1
 */5 *     * * *   root    /opt/observium/poller-wrapper.py $WORKERS >> /dev/null 2>&1
+0   0     * * *   root    /opt/observium/housekeeping.php $HOUSEKEEPING_ARGS
