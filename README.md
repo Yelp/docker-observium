@@ -81,6 +81,7 @@ Environment variables
 | `WORKERS`           | 2                |
 | `USE_WEATHERMAP`    | false            |
 | `CUSTOM_PHP_INI`    | false            |
+| `HOUSEKEEPING_ARGS` | '-e -t'          |
 | `USE_SVN`           | false            |
 | `SVN_USER`          | N/A              |
 | `SVN_PASS`          | N/A              |
@@ -115,6 +116,9 @@ timings, but like most things in this image it can be overridden by providing
 
 Please checkout out the [initial post] in the mailing list for details on how
 to configure your config.php for better control and what each switch does.
+
+Currently the stdout/stderr for the job isn't being sent to /dev/null so you
+should be able to see the status of your cleanups with `docker logs [id]`
 
 [initial post]: http://postman.memetic.org/pipermail/observium/2014-July/007264.html
 
